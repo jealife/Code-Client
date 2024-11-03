@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Code client</title> <!-- TODO: update page title -->
+
+    <meta name="description" content="Page Description"> <!-- TODO: update meta description -->
+    <meta property="og:title" content="Home - Page"> <!-- TODO: update og:title -->
+    <meta property="og:url" content="https://www.example.com/page"> <!-- TODO: update og:url -->
+    <meta property="og:description" content="Page pour afficher un code client"> <!-- TODO: update og:description -->
+    <meta property="og:image" content="/python.jpg"> <!-- TODO: og:image -->
+    <meta property="og:image:alt" content="Page pour afficher un code client"> <!-- TODO: update og:image:alt -->
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="python.jpg"> <!-- TODO: update twitter:cared -->
+    <link rel="canonical" href="https://www.example.com/page"> <!-- TODO: update canonical link -->
+    <link rel="icon" href="python.png">
+    <link rel="icon" href="/python.png" type="image/png">
+    <link rel="apple-touch-icon" href="/python.png">
+    <meta name="theme-color" content="#002450">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <main class="min-h-screen w-full grid grid-cols-1 place-content-center bg-[#002450] px-3">
+        <section
+            class="shadow-lg max-w-xl ww-max mx-auto flex flex-col gap-8 lg:px-10 px-4 py-7 bg-white rounded-md drop-shadow-xl">
+            <h1 class="text-3xl font-bold text-center">Enregistrement client</h1>
+            <div class="flex flex-col gap-4 ">
+                <input id="anneeInscription" class="px-2 py-2 outline outline-2 outline-blue-800 rounded-md"
+                    type="number" placeholder="Année d'incription" min="1999" max="2100" maxlength="4">
+                <div>
+                    <label for="">Sex</label>
+                    <br>
+                    <input type="radio" name="choix" id="m" value="M"> M
+                    <input type="radio" name="choix" id="f" value="F"> F <br>
+                </div>
+
+                <input id="departement" class="px-2 py-2 outline outline-2 outline-blue-800 rounded-md" type="number"
+                    placeholder="Département" min="10" max="99" maxlength="2">
+                <div class="flex justify-end">
+                    <button onclick="CodeClient()" id="bnt"
+                        class="px-3 py-2 bg-blue-700 text-slate-50 rounded-md hover:bg-blue-900 duration-300">Valider</button>
+                </div>
+            </div>
+            <section class="bg-blue-200 p-3 rounded-md">
+                <div>
+                    <h3 class="font-bold">Code client : <span class="text-blue-900 duration-300"
+                            id="code_client"></span></h3>
+                </div>
+            </section>
+        </section>
+
+    </main>
+    <script>
+        function CodeClient() {
+            var code = document.getElementById('code_client');
+            var anIns = document.getElementById('anneeInscription').value.toString();
+            // var sex = document.getElementById('sexe').value;
+            var dep = document.getElementById('departement').value.toString();
+            var f = document.getElementById('f').checked;
+            var sexF = document.getElementById('f').value;
+            var sexM = document.getElementById('m').value;
+            var m = document.getElementById('m').checked;
+            var sex;
+            if (f){
+                code.innerText = anIns + sexF + dep;
+            }
+            if (m){
+                code.innerText = anIns + sexM + dep;
+            }
+        };
+    </script>
+</body>
+
+</html>
